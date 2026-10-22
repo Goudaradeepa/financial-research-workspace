@@ -1,0 +1,25 @@
+APPLE INC. Q3 2024 FINANCIAL RESULTS CONFERENCE CALL
+Date: August 1, 2024
+Participants:
+- Tim Cook, Chief Executive Officer
+- Luca Maestri, Chief Financial Officer
+- Operator
+
+Operator:
+Good day and welcome to the Apple Inc. Third Quarter 2024 Financial Results Conference Call. Today's call is being recorded. At this time, for opening remarks and introductions, I would like to turn the call over to Suhasini Chandramouli, Director of Investor Relations.
+
+Luca Maestri:
+Thank you. Total revenue for the June quarter was $85.8 billion, up 5% year-over-year. We set a new June quarter revenue record in more than two dozen countries and regions, including Canada, Mexico, France, Germany, the UK, India, and Indonesia.
+Products revenue was $61.6 billion, up 2% compared to last year, driven by the launch of our new iPad Air and iPad Pro powered by the M4 chip.
+Services revenue reached a new all-time record of $24.2 billion, up 14% year-over-year.
+Gross margin was 46.3%, near the high end of our guidance range. Operating expenses were $14.3 billion, well within our expectations. Net income was $21.4 billion and diluted earnings per share was $1.40, up 11% compared to a year ago.
+Operating cash flow was very strong at $28.9 billion, and we returned over $32 billion to shareholders during the quarter.
+
+Tim Cook:
+Today, Apple is reporting a new June quarter revenue record of $85.8 billion, up 5% from a year ago. During the quarter, we were thrilled to announce incredible updates to our software platforms at our Worldwide Developers Conference, including Apple Intelligence, a personal intelligence system that puts powerful, private generative models at the core of iPhone, iPad, and Mac. We can't wait to share these tools with our users.
+
+Operator:
+We will now begin the Q&A session. First question comes from Shannon Cross with Credit Suisse.
+
+Shannon Cross:
+Thank you very much. Tim, could you talk more about how Apple Intelligence is expected to drive the iPhone upgrade cycle this fall?

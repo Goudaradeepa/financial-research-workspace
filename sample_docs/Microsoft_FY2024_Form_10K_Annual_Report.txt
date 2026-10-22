@@ -1,0 +1,26 @@
+UNITED STATES SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+FORM 10-K
+(Mark One)
+ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934
+For the fiscal year ended September 30, 2024
+
+MICROSOFT CORPORATION
+Commission File Number 001-37845
+
+PART I
+Item 1. Business
+Microsoft is a technology company whose mission is to empower every person and every organization on the planet to achieve more. We strive to create local opportunity, growth, and impact in every country around the world. Our platforms and tools help drive small business productivity, large business competitiveness, and public-sector efficiency.
+
+Item 1A. Risk Factors
+Our operations and financial results are subject to various risks and uncertainties, including:
+- Intense competition across cloud computing, AI platforms, and personal computing.
+- Rapid technological change, including generative AI models and data center infrastructure requirements.
+- Significant capital investments in cloud infrastructure and specialized AI accelerators.
+- Cybersecurity vulnerabilities and compliance with evolving international privacy regulations.
+
+PART II
+Item 7. Management's Discussion and Analysis of Financial Condition and Results of Operations
+Total revenue was $245.1 billion for fiscal year 2024, compared to $211.9 billion in fiscal year 2023, an increase of 16%. Operating income was $109.4 billion, increasing 24%. Diluted EPS was $11.80, up 22%.
+Microsoft Cloud revenue was $137.4 billion, up 23% year-over-year, driven by Azure expansion and AI services adoption.
+Cash and cash equivalents totaled $34.7 billion as of September 30, 2024.

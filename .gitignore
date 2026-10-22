@@ -1,0 +1,53 @@
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node & Frontend dependencies
+frontend/node_modules/
+frontend/.tmp/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# User session upload storage (Generated at runtime by user uploads and seeding)
+storage/*
+!storage/.gitkeep
+
+# Environment & Sensitive keys
+.env
+.env.local
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+*.swp
+*~

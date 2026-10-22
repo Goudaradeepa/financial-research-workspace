@@ -3,9 +3,13 @@ import { Plus, Briefcase, ArrowRight } from "lucide-react";
 import type { ResearchSession, DocumentItem, CreateSessionInput } from "./types";
 import { listSessions, createSession, updateSession, deleteSession, deleteDocument } from "./services/api";
 import { SessionSidebar } from "./components/SessionSidebar";
-import { SessionHeader } from "./components/SessionHeader";
+import { SessionHeader, type WorkspaceTab } from "./components/SessionHeader";
 import { DocumentUpload } from "./components/DocumentUpload";
 import { DocumentList } from "./components/DocumentList";
+import { RedFlagsView } from "./components/RedFlagsView";
+import { ResearchChatView } from "./components/ResearchChatView";
+import { ComparisonView } from "./components/ComparisonView";
+import { ReportView } from "./components/ReportView";
 import { DocumentPreviewModal } from "./components/DocumentPreviewModal";
 import { NewSessionModal } from "./components/NewSessionModal";
 import { RenameSessionModal } from "./components/RenameSessionModal";
@@ -14,6 +18,7 @@ import { DeleteConfirmModal } from "./components/DeleteConfirmModal";
 export const App: React.FC = () => {
   const [sessions, setSessions] = useState<ResearchSession[]>([]);
   const [activeSessionId, setActiveSessionId] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<WorkspaceTab>("documents");
 
   // Modals state
   const [isNewSessionModalOpen, setIsNewSessionModalOpen] = useState(false);
@@ -111,27 +116,77 @@ export const App: React.FC = () => {
       <main className="flex-1 flex flex-col min-w-0 overflow-hidden bg-slate-50/50">
         {activeSession ? (
           <div className="flex-1 flex flex-col h-full overflow-hidden">
-            {/* Session Top Bar */}
+            {/* Session Top Bar with All Agent Navigation Tabs */}
             <SessionHeader 
-              session={activeSession} 
+              session={activeSession}
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
               onRename={() => setSessionToRename(activeSession)}
             />
 
-            {/* Main Content Area: PDF Upload & Document Table */}
-            <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-6">
-              <div className="max-w-7xl mx-auto space-y-6">
-                <DocumentUpload
-                  sessionId={activeSession.id}
-                  onUploadSuccess={handleUploadSuccess}
-                />
-                <DocumentList
-                  sessionId={activeSession.id}
-                  onSelectDoc={(id) => setSelectedDocIdForPreview(id)}
-                  onDeleteDoc={(doc) => setDocToDelete(doc)}
-                  refreshTrigger={refreshTrigger}
-                />
+            {/* Tab 1: Documents & Files (Document Agent & Extraction Agent) */}
+            {activeTab === "documents" && (
+              <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-6">
+                <div className="max-w-7xl mx-auto space-y-6">
+                  <DocumentUpload
+                    sessionId={activeSession.id}
+                    onUploadSuccess={handleUploadSuccess}
+                  />
+                  <DocumentList
+                    sessionId={activeSession.id}
+                    onSelectDoc={(id) => setSelectedDocIdForPreview(id)}
+                    onDeleteDoc={(doc) => setDocToDelete(doc)}
+                    refreshTrigger={refreshTrigger}
+                  />
+                </div>
               </div>
-            </div>
+            )}
+
+            {/* Tab 2: Red Flags (Red Flag Agent - Corporate Risk Radar) */}
+            {activeTab === "red_flags" && (
+              <div className="flex-1 overflow-y-auto p-6 md:p-8">
+                <div className="max-w-7xl mx-auto">
+                  <RedFlagsView
+                    sessionId={activeSession.id}
+                    onSelectDoc={(id) => setSelectedDocIdForPreview(id)}
+                    onNavigateNext={() => setActiveTab("chat")}
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Tab 3: Research / Chat (Research Agent - LangGraph RAG) */}
+            {activeTab === "chat" && (
+              <div className="flex-1 overflow-y-auto p-6 md:p-8">
+                <div className="max-w-7xl mx-auto">
+                  <ResearchChatView
+                    sessionId={activeSession.id}
+                    onNavigateNext={() => setActiveTab("comparison")}
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Tab 4: Comparison Matrix (Comparison Agent) */}
+            {activeTab === "comparison" && (
+              <div className="flex-1 overflow-y-auto p-6 md:p-8">
+                <div className="max-w-7xl mx-auto">
+                  <ComparisonView
+                    sessionId={activeSession.id}
+                    onNavigateNext={() => setActiveTab("reports")}
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Tab 5: Executive Reports (Report Agent) */}
+            {activeTab === "reports" && (
+              <div className="flex-1 overflow-y-auto p-6 md:p-8">
+                <div className="max-w-7xl mx-auto">
+                  <ReportView sessionId={activeSession.id} />
+                </div>
+              </div>
+            )}
           </div>
         ) : (
           /* Empty Workspace State */
@@ -146,7 +201,7 @@ export const App: React.FC = () => {
                   Financial Research Workspace
                 </h2>
                 <p className="text-xs text-slate-500 leading-relaxed">
-                  Select a research session from the sidebar or initialize a new session to begin filing ingestion and automated metric extraction.
+                  Select a research session from the sidebar or initialize a new session to run the full Multi-Agent pipeline (Document, Extraction, Red Flag, Research, Comparison, and Report Agents).
                 </p>
               </div>
 
@@ -164,15 +219,15 @@ export const App: React.FC = () => {
               <div className="pt-5 border-t border-slate-100 grid grid-cols-3 gap-2 text-left">
                 <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                   <span className="block text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1">01 Ingest</span>
-                  <p className="text-[11px] text-slate-700 font-medium">Upload Annual Reports (PDF)</p>
+                  <p className="text-[11px] text-slate-700 font-medium">Document & Extraction Agents</p>
                 </div>
                 <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                  <span className="block text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1">02 Index</span>
-                  <p className="text-[11px] text-slate-700 font-medium">Document Agent FAISS Chunks</p>
+                  <span className="block text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1">02 Risk</span>
+                  <p className="text-[11px] text-slate-700 font-medium">Red Flag Risk Radar</p>
                 </div>
                 <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                  <span className="block text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1">03 Extract</span>
-                  <p className="text-[11px] text-slate-700 font-medium">Extraction Agent Grounded Metrics</p>
+                  <span className="block text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1">03 Synthesize</span>
+                  <p className="text-[11px] text-slate-700 font-medium">Comparison & Reports</p>
                 </div>
               </div>
             </div>
